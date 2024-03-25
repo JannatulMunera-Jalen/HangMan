@@ -1,5 +1,6 @@
 #importing random module
 import random
+import requests
 
 def welcome():
     while True:
@@ -28,10 +29,29 @@ def play_again():
 
 #Define another function GET_WORD for generating random words for the user to guess
 #Add a docstring
+
+# Global variable to store the word
+word_to_guess = None
+
 def get_word():
-        """This function generates the word the user will attempt guessing"""
-        words = ['python','cool','battery','urban','meow']
-        return random.choice(words).lower()       
+    """This function generates the word the user will attempt guessing"""
+    global word_to_guess
+    if word_to_guess:
+        return word_to_guess
+
+    response = requests.get("https://random-word-api.herokuapp.com/word?number=1")
+    if response.status_code == 200:
+        word = response.json()[0]
+        word_to_guess = word.lower()
+        return word_to_guess
+    else:
+        # If fetching fails, fallback to a local list of words
+        words = ['python', 'cool', 'battery', 'urban', 'meow']
+        word_to_guess = random.choice(words).lower()
+        return word_to_guess
+    
+# Get the word
+word_to_guess = get_word()
 
 #Define another function GAME_RUN(), add docstring if required
 def game_run():
@@ -93,7 +113,7 @@ def game_run():
                                 tries-=1
         #user inputs letters and it is not equal to the total numebr of letters in the word to guess.
                 else:
-                        print('The length of your guess is ot the same as the length of the correct word.')
+                        print('The length of your guess is not the same as the length of the correct word.')
                         tries-=1
 
                 status = ''
@@ -109,7 +129,7 @@ def game_run():
                         print('Great Job! You guessed the word correctly!')
                         guessed = True
                 elif tries == 0:
-                        print("Yikes! You ran out of guesses and you couldn't guess the word.")
+                        print("Yikes! You ran out of guesses and you couldn't guess the word. The word was", word_to_guess)
 
         #Initiate 'PLAY_AGAIN" funtion if the user wishes to continue, at the end of this funtion
         play_again()
