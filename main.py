@@ -63,7 +63,7 @@ def game_run():
         #Define an 'ALPHABET' variable
         alphabet = ('abcdefjhijklmnopqrstuvwxyz')
         
-        #Set guess word to get_word fnction for a random word to be generated
+        #Set guess word to get_word function for a random word to be generated
         word = get_word()
 
         #Initiate an empty list for guessed letter
@@ -99,7 +99,7 @@ def game_run():
                                 letters_guessed.append(guess)
                                 tries-=1
                         elif guess in word:
-                                print('YEP! That leter exists in the word!')
+                                print('YEP! That letter exists in the word!')
                                 letters_guessed.append(guess)
                         else:
                                 print('CHECK YOUR ENTRY! IT BETTER NOT BE A DIGIT >:(')
