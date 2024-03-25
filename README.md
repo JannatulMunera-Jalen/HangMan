@@ -31,3 +31,5 @@ Break down of the the code step by step:
    - It simply calls the `game_run()` function to start the game when the script is executed.
 
 This script creates a simple Hangman game where the player guesses letters or the entire word within a limited number of tries. After each round, the player is prompted if they want to play again.
+
+using URL: https://mardiyyah.medium.com/a-simple-hangman-learnpythonthroughprojects-series-10-fedda58741b as reference
