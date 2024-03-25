@@ -9,7 +9,7 @@ def welcome():
 
         # Check if a valid name is entered
         if name.isalpha():
-            print("AYEEEE!", name, "My Mannn!! or woman, or a unicorn etc. <<< Rules simple. Computer picks a random word and you guess it. Easy right? So have fun! OH! and you only get 5 chances to guess else you're the reason why an innocent man gets hanged right in front of you! So, have fun! >>>")
+            print("AYEEEE!", name, "My Mannn!! or woman, or a unicorn etc. <<< Rules simple. Computer picks a random word and you guess it, using a single letter or the whole word. Easy right? So have fun! OH! and you only get 7 chances to guess else you're the reason why an innocent man gets hanged right in front of you! So, have fun! >>>")
             break  # Exit the loop if a valid name is entered
         else:
             print("Mate... You ain't got no option, type yo name.")
@@ -19,7 +19,7 @@ def welcome():
 def play_again():
 
         """This function asks user/player if they wish to replay the game"""
-        response = input("Would you like to play again? Enter 'Y' for yes, 'N' for No").lower()
+        response = input("Would you like to play again? Enter 'Y' for yes, 'N' for No: ").lower()
 
         #Create a decision making process
         if response == 'y':
