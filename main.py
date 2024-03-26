@@ -53,6 +53,81 @@ def get_word():
 # Get the word
 word_to_guess = get_word()
 
+#Define another function DRAW_HANGMAN()
+#Add docstring
+def draw_hangman(incorrect_guesses):
+    stages = [  # Hangman stages
+        '''
+           --------
+           |      |
+           |      O
+           |     \|/
+           |      |
+           |     / \\
+           -
+        ''',
+        '''
+           --------
+           |      |
+           |      O
+           |     \|/
+           |      |
+           |     / 
+           -
+        ''',
+        '''
+           --------
+           |      |
+           |      O
+           |     \|/
+           |      |
+           |      
+           -
+        ''',
+        '''
+           --------
+           |      |
+           |      O
+           |     \|
+           |      |
+           |     
+           -
+        ''',
+        '''
+           --------
+           |      |
+           |      O
+           |      |
+           |      |
+           |     
+           -
+        ''',
+        '''
+           --------
+           |      |
+           |      O
+           |    
+           |      
+           |     
+           -
+        ''',
+        '''
+           --------
+           |      |
+           |      
+           |    
+           |      
+           |     
+           -
+        '''
+    ]
+    return stages[incorrect_guesses]
+
+# Example usage
+incorrect_guesses = 6
+
+
+
 #Define another function GAME_RUN(), add docstring if required
 def game_run():
         """This function runs the game when invoked and basically call all the other functions that involves to be able to play this game"""
@@ -90,31 +165,39 @@ def game_run():
         #user inputs letter
                 if len(guess) == 1:
                         if guess not in alphabet:
+                                print(draw_hangman(incorrect_guesses))
                                 print('You did not enter nothin. Make sure its a letter from the alphabet and not a number, I am not making you guess Elon Musks kids name')
                         elif guess in letters_guessed:
+                                print(draw_hangman(incorrect_guesses))
                                 print('You already guessed that letter, try again!')
                         #Detuct tries each time user fails to guess incorrectly
                         elif guess not in word:
-                                print('WHOOPS! Sorry, that letter is not part of the word : (')
                                 letters_guessed.append(guess)
                                 tries-=1
+                                print(draw_hangman(incorrect_guesses))
+                                print('WHOOPS! Sorry, that letter is not part of the word : (')
                         elif guess in word:
                                 print('YEP! That letter exists in the word!')
+                                print(draw_hangman(incorrect_guesses))
                                 letters_guessed.append(guess)
                         else:
+                                print(draw_hangman(incorrect_guesses))
                                 print('CHECK YOUR ENTRY! IT BETTER NOT BE A DIGIT >:(')
         #user inputs the full word
                 elif len(guess) == len(word):
                         if guess == word:
+                                print(draw_hangman(incorrect_guesses))
                                 print('YAY! You got it!')
                                 guessed = True
                         else:
-                                print('Sorry, that was not the word we were looking for :(')
                                 tries-=1
+                                print(draw_hangman(incorrect_guesses))
+                                print('Sorry, that was not the word we were looking for :(')
         #user inputs letters and it is not equal to the total numebr of letters in the word to guess.
                 else:
-                        print('The length of your guess is not the same as the length of the correct word.')
                         tries-=1
+                        print(draw_hangman(incorrect_guesses))
+                        print('The length of your guess is not the same as the length of the correct word.')
 
                 status = ''
                 if guessed == False:
@@ -126,9 +209,11 @@ def game_run():
                         print(status)
 
                 if status == word:
-                        print('Great Job! You guessed the word correctly!')
                         guessed = True
+                        print(draw_hangman(incorrect_guesses))
+                        print('Great Job! You guessed the word correctly!')
                 elif tries == 0:
+                        print(draw_hangman(incorrect_guesses))
                         print("Yikes! You ran out of guesses and you couldn't guess the word. The word was", word_to_guess)
 
         #Initiate 'PLAY_AGAIN" funtion if the user wishes to continue, at the end of this funtion
