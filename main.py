@@ -132,11 +132,6 @@ def draw_hangman(incorrect_guesses):
     ]
     return stages[incorrect_guesses]
 
-# Example usage
-incorrect_guesses = 6
-print(incorrect_guesses)
-
-
 #Define another function GAME_RUN(), add docstring if required
 def game_run():
         """This function runs the game when invoked and basically call all the other functions that involves to be able to play this game"""
@@ -145,7 +140,7 @@ def game_run():
         welcome()
         
         #Define an 'ALPHABET' variable
-        alphabet = ('abcdefjhijklmnopqrstuvwxyz')
+        alphabet = ('abcdefghijklmnopqrstuvwxyz')
         
         #Set guess word to get_word function for a random word to be generated
         word = get_word()
