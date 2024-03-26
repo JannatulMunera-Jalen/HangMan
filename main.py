@@ -160,6 +160,7 @@ def game_run():
         #print a guess hint for the user for number of letters contained in the word
         print('The word contains', len(word), 'letters.')
         print(len(word) * '_')
+        print(draw_hangman(tries))
         
         #Initiate a while loop to create decisions, taking into consideration if the user decides to enter just a single letter or the full word
         while guessed == False and tries >0:
