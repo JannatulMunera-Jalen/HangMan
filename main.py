@@ -125,7 +125,7 @@ def draw_hangman(incorrect_guesses):
 
 # Example usage
 incorrect_guesses = 6
-
+print(incorrect_guesses)
 
 
 #Define another function GAME_RUN(), add docstring if required
